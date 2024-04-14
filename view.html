@@ -226,10 +226,12 @@
 
 
     function card(data){
+        let status = parseInt(data.temp) >= 37 ? "Cuaca Terik" : "Normal";
+        let color = parseInt(data.temp) >= 37 ? "Orange" : "#426B1F";
         return '<div style="float:left;width: 23rem; height: auto; margin-bottom : 20px; margin-right:20px; left: 523px; top: 301px; background: #FAFAF5; border-radius: 24px; overflow: hidden;" >'+
-            '<table ><tr><td><img style="width: 23rem; height:12rem; left: 0px; top: 0px; " src="images/banner.jpg" /></td></tr>' +
+            '<table ><tr><td><img style="width: 23rem; height:12rem; left: 0px; top: 0px; " src="https://img.freepik.com/free-photo/white-cloud-blue-sky-sea_74190-4488.jpg?w=740&t=st=1713113490~exp=1713114090~hmac=1a16e61b94ec4176ca037c51f812a93375e632e6e8d95c16c59d0da7bfef236d" /></td></tr>' +
              ' <tr> <td  style="padding:0 10px;"><div style="left: 24px; top: 320px;  color: black; font-size: 20px; font-family: Inter; font-weight: 600; line-height: 26px; word-wrap: break-word">'+data.location+'</div> </td></tr>' +
-            ' <tr> <td style="padding:0 10px;"> <div style="left: 24px; top: 350px;  color: #426B1F; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 26px; word-wrap: break-word">Suhu</div> </td></tr> ' +
+            ' <tr> <td style="padding:0 10px;"> <div style="left: 24px; top: 350px;  color: '+color+'; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 26px; word-wrap: break-word">'+status+'</div> </td></tr> ' +
              ' <tr> <td  style="padding:0 10px;"><div style="left: 24px; top: 392px;  color: #6D6D6D; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word"><span>Suhu : '+data.temp+'°C</span><br><span>Kelembapan : '+data.hum+'%</span></div></td> </tr> ' +
              ' <tr> <td style="padding:50px 20px; position:relative; "> <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="position:absolute; right:20px;padding-left: 23px; padding-right: 23px; padding-top: 13.50px; padding-bottom: 13.50px;  top: 32px; background: #426B1F; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">'+
                     '<a  class="apply"  style="text-align: center; color: white; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 20.80px; word-wrap: break-word ; text-decoration:none;"  >Lihat</a>'+
