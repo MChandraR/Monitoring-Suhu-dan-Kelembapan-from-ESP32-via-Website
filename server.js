@@ -8,4 +8,11 @@ server.get("/",(req,res)=>{
     res.send("hallo");
 })
 
+server.post("/test",(req,res)=>{
+    console.log(req.body);
+    res.send({
+        "data" : req.body
+    });
+});
+
 httpServer.listen(3000);
