@@ -9,7 +9,7 @@ server.get("/",(req,res)=>{
 })
 httpServer.listen(3000);
 server.use(express.json());
-server.use(express.static('/public'));
+server.use(express.static('public'));
 
 let data = {};
 
