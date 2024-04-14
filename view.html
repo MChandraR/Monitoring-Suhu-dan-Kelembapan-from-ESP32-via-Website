@@ -90,7 +90,7 @@
         <table>
           <tr>
             <td style="width:auto;">
-              <div style=" color: #426B1F; font-size: 32px; font-family: Arial; font-weight: bold;  word-wrap: break-word" ><a href="home" style="text-decoration:none;  color: #426B1F;">Job Finder</a></div>
+              <div style=" color: #426B1F; font-size: 32px; font-family: Arial; font-weight: bold;  word-wrap: break-word" ><a href="home" style="text-decoration:none;  color: #426B1F;">M Chandra R</a></div>
             </td>
           </tr>
         </table>
@@ -102,9 +102,7 @@
           <td style="padding : 0 1rem ;">
             <a style="vertical-align :supper; top: 45.50px; float:left; text-align: center; color: black; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 20.80px; word-wrap: break-word; font-weight:bold; text-decoration:none;" href="home">Home</a></a>
           </td>
-          <td style="padding : 0 1rem ;">
-            <a style="top: 45.50px; float:left; text-align: center; color: black; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 20.80px; word-wrap: break-word; font-weight:bold; text-decoration:none;" href="job">Jobs </a></div>
-          </td>
+
           <td style="padding : 0 1rem ;">
             <a style="top: 45.50px; float:left; text-align: center; color: black; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 20.80px; word-wrap: break-word; font-weight:bold; text-decoration:none;" href="profile">Profile Saya</a></div>
           </td>
@@ -246,8 +244,9 @@
             url: "getdata",
             context: document.body
         }).done(function(e) {
+            dataArea.innerHTML = "";
             for(let data in e){
-                dataArea.innerHTML = card(e[data]);
+                dataArea.innerHTML += card(e[data]);
                 console.log(e[data]);
             }
         }).fail((e)=>{
