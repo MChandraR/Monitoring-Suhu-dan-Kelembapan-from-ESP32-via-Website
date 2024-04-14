@@ -11,6 +11,7 @@ server.get("/",(req,res)=>{
 server.post("/test",(req,res)=>{
     console.log(req.body);
     res.send({
+        "status" : "berhasil",
         "data" : req.body
     });
 });
