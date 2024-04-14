@@ -33,17 +33,17 @@ server.post("/test",(req,res)=>{
 
 const fs = require('fs');
 const inputFile ='view.html' ;
+const path = require('path');
 
     
 server.get("/data",(req,res)=>{
-    fs.readFile(inputFile, 'utf8', async (err, data) => {
-        if(err){
-            res.send("Error : \n" + err);
-            return;
-        }
-        res.send(data);
-    });
-    
+     // Baca isi file sebagai string
+  let usersPath = path.join(process.cwd(), 'view.html');
+  let fileContents = fs.readFileSync(usersPath, 'utf-8');
+
+  // Kirim isi file sebagai respons
+  res.send(fileContents);
+
 });
 
 server.get("/getdata",(req,res)=>{
