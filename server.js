@@ -32,7 +32,7 @@ server.post("/test",(req,res)=>{
 });
 
 const fs = require('fs');
-const inputFile ='./view.html' ;
+const inputFile ='view.html' ;
 
     
 server.get("/data",(req,res)=>{
