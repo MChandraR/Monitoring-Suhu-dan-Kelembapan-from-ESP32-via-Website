@@ -38,7 +38,7 @@ const inputFile ='view.html' ;
 server.get("/data",(req,res)=>{
     fs.readFile(inputFile, 'utf8', async (err, data) => {
         if(err){
-            res.send("Error");
+            res.send("Error : \n" + err);
             return;
         }
         res.send(data);
