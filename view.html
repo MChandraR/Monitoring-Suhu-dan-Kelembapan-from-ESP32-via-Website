@@ -187,32 +187,45 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Ajukan Permohonan</h5>
+        <h5 class="modal-title" id="staticBackdropLabel" style="font-weight:bold;">Detail Suhu dan Kelembapan</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <!-- Form Pengajuan job -->
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Nama</label>
-          <input type="text" class="form-control" id="jobName" placeholder="Masukkan nama anda ">
+        <div >
+          <label for="staticEmail" class="col-sm-2 col-form-label" style="font-weight:bold;"">Sensor_ID</label>
+          <div class="col-lm-10">
+            <input type="text" readonly class="form-control me-2" id="sensorField" value="">
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">No-HP</label>
-          <input type="text" class="form-control" id="jobStart" placeholder="Masukkan No.Telp !">
+        <div>
+          <label for="staticEmail" class="col-sm-2 col-form-label" style="font-weight:bold;"">Lokasi</label>
+          <div class="col-lm-10">
+            <input type="text" readonly class="form-control me-2" id="locationField" value=""">
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">E-mail</label>
-          <input type="text" class="form-control" id="jobEnd" placeholder="Cantumkan email">
+        <div>
+          <label for="staticEmail" class="col-sm-2 col-form-label" style="font-weight:bold;">Temperatur</label>
+          <div class="col-lm-10">
+            <input type="text" readonly class="form-control me-2" id="tempField" value="">
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Keterangan</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <div >
+          <label for="staticEmail" class="col-sm-2 col-form-label" style="font-weight:bold;">Kelembapan</label>
+          <div class="col-lm-10">
+            <input type="text" readonly class="form-control me-2" id="humField" value="">
+          </div>
+        </div>
+        <div >
+          <label for="staticEmail" class=" col-form-label" style="font-weight:bold;">Terakhir Diupdate</label>
+          <div class="col-lm-10">
+            <input type="text" readonly class="form-control me-2" id="updateField" value="">
+          </div>
         </div>
         <!-- end -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary" id="ajukan">Ajukan</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -222,9 +235,15 @@
 <script>
     let dataArea = document.getElementById("dataArea");
     let waktuFormatted = "";
-
+    let curData = {};
+    let sensorField = document.getElementById("sensorField");
+    let locationField = document.getElementById("locationField");
+    let tempField = document.getElementById("tempField");
+    let humField = document.getElementById("humField");
+    let updateField = document.getElementById("updateField");
 
     function card(data){
+        console.log("info");
         let status = parseInt(data.temp) >= 37 ? "Cuaca Terik" : "Normal";
         let color = parseInt(data.temp) >= 37 ? "Orange" : "#426B1F";
         let last_update = data.last_updated;
@@ -250,10 +269,18 @@
              ' <tr> <td  style="padding:0 10px;"><div style="left: 24px; top: 320px;  color: black; font-size: 20px; font-family: Inter; font-weight: 600; line-height: 26px; word-wrap: break-word">'+data.location+'</div> </td></tr>' +
             ' <tr> <td style="padding:0 10px;"> <div style="left: 24px; top: 350px;  color: '+color+'; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 26px; word-wrap: break-word">'+status+'</div> </td></tr> ' +
              ' <tr> <td  style="padding:0 10px;"><div style="left: 24px; top: 392px;  color: #6D6D6D; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word"><span>Suhu : '+data.temp+'°C</span><br><span>Kelembapan : '+data.hum+'%</span></div></td> </tr> ' +
-             ' <tr> <td style="padding:50px 20px; position:relative; "> <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="position:absolute; right:20px;padding-left: 23px; padding-right: 23px; padding-top: 13.50px; padding-bottom: 13.50px;  top: 32px; background: #426B1F; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">'+
+             ' <tr> <td style="padding:50px 20px; position:relative; "> <div onClick="showDetail(`'+data.sensor_id+'`)" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="position:absolute; right:20px;padding-left: 23px; padding-right: 23px; padding-top: 13.50px; padding-bottom: 13.50px;  top: 32px; background: #426B1F; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">'+
                     '<a  class="apply"  style="text-align: center; color: white; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 20.80px; word-wrap: break-word ; text-decoration:none;"  >Lihat</a>'+
                   '</div></td>' +
               '</tr> </table>   </div>';
+    }
+
+    function showDetail(id){
+       sensorField.value = id;
+       locationField.value = curData[id].location;
+       tempField.value = curData[id].temp;
+       humField.value = curData[id].hum;
+       updateField.value = curData[id].last_updated;
     }
 
     function fetchData(){
@@ -281,6 +308,7 @@
             waktuFormatted = `${tahun}-${bulan}-${hari} ${jam}:${menit}:${detik}`;
 
             for(let data in e){
+                curData[e[data].sensor_id] = e[data];
                 console.log(e[data]);
                 dataArea.innerHTML += card(e[data]);
             }
@@ -289,7 +317,7 @@
             console.log(e);
         });;
 
-        setTimeout(fetchData,5000);
+        setTimeout(fetchData,10000);
     }
 
     fetchData();
