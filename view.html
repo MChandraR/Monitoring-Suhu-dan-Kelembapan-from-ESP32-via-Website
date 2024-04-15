@@ -281,8 +281,8 @@
             waktuFormatted = `${tahun}-${bulan}-${hari} ${jam}:${menit}:${detik}`;
 
             for(let data in e){
-                dataArea.innerHTML += card(data);
                 console.log(data);
+                dataArea.innerHTML += card(data);
             }
         }).fail((e)=>{
             console.log("Error :" );

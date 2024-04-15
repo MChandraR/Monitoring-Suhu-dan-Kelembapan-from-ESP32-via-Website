@@ -27,7 +27,7 @@ server.post("/test",async (req,res)=>{
     
     if(body.id!=null && body.id!=""){
         try {
-            await sql`INSERT INTO data VALUES (${ body.id}, ${ body.location}, ${ body.temp}, ${ body.hum}, ${ body.last_update});`;
+            await sql`INSERT INTO data VALUES (${ body.id}, ${ body.location}, ${ body.temp}, ${ body.hum}, ${ waktuFormatted});`;
         } catch (error) {
             res.send({
                 "status" : "error",
