@@ -34,7 +34,6 @@ server.post("/test",async (req,res)=>{
             }else{
                 await sql`INSERT INTO data VALUES (${ body.id}, ${ body.location}, ${ body.temp}, ${ body.hum}, ${ waktuFormatted});`;
             }
-            return;
         } catch (error) {
             res.send({
                 "status" : "error",
