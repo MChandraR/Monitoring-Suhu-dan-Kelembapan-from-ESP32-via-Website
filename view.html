@@ -263,7 +263,10 @@
             url: "getdata",
             context: document.body
         }).done(function(e) {
-            dataArea.innerHTML = "";
+            console.log(Object.keys(e).length);
+            if(Object.keys(e).length > 0){
+              dataArea.innerHTML = "";
+            }
             const waktuSekarang = new Date();
             waktuSekarang.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
             // Mendapatkan komponen waktu
