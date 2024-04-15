@@ -27,9 +27,6 @@ server.post("/test",async (req,res)=>{
     
     if(body.id!=null && body.id!=""){
         try {
-            const petName = request.query.petName;
-            const ownerName = request.query.ownerName;
-            if (!petName || !ownerName) throw new Error('Pet and owner names required');
             await sql`INSERT INTO data VALUES (${ body.id}, ${ body.location}, ${ body.temp}, ${ body.hum}, ${ body.last_update});`;
         } catch (error) {
             res.send({
