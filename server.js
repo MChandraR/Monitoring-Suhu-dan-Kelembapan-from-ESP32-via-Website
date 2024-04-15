@@ -23,15 +23,12 @@ server.post("/test",async (req,res)=>{
 
     // Membuat string dengan format yang diinginkan
     const waktuFormatted = waktuSekarang.format('YYYY-MM-DD HH:mm:ss');
-    let ress = null;
+
     
     if(body.id!=null && body.id!=""){
         try {
             const { rows } = await sql`SELECT * FROM data WHERE sensor_id = '${ body.id}' `;
-            console.log(rows);
-            ress = rows;
-                await sql`INSERT INTO data VALUES (${ body.id}, ${ body.location}, ${ body.temp}, ${ body.hum}, ${ waktuFormatted});`;
-            
+            res.send(rows);
         } catch (error) {
             res.send({
                 "status" : "error",
@@ -43,8 +40,7 @@ server.post("/test",async (req,res)=>{
     console.log(data);
     res.send({
         "status" : "berhasil",
-        "data" : req.body,
-        "row" : ress
+        "data" : req.body
     });
 });
 
