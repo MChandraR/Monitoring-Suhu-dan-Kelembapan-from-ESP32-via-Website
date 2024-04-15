@@ -230,9 +230,9 @@
         let last_update = data.last_update;
        
             
-        let pastMenit = parseInt(waktuFormatted.substr(14,2))-parseInt(data.last_update.substr(14,2));
-        let pastJam = (parseInt(waktuFormatted.substr(11,2))-parseInt(data.last_update.substr(11,2))) * 60;
-        let pastHari = (parseInt(waktuFormatted.substr(8,2))-parseInt(data.last_update.substr(8,2))) * 60 * 24;
+        let pastMenit = parseInt(waktuFormatted.substr(14,2))-parseInt(data.last_updated.substr(14,2));
+        let pastJam = (parseInt(waktuFormatted.substr(11,2))-parseInt(data.last_updated.substr(11,2))) * 60;
+        let pastHari = (parseInt(waktuFormatted.substr(8,2))-parseInt(data.last_updated.substr(8,2))) * 60 * 24;
         let totalWaktu = pastMenit + pastJam + pastHari;
         
         if(totalWaktu>=60 * 24){
