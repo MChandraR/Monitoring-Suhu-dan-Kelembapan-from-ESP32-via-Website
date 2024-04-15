@@ -16,7 +16,7 @@ server.use(express.static('public'));
 
 let data = {};
 
-server.post("/test",(req,res)=>{
+server.post("/test",async (req,res)=>{
     console.log(req.body);
     let body = req.body;
     let waktuSekarang = moment().tz('Asia/Jakarta');
@@ -26,12 +26,17 @@ server.post("/test",(req,res)=>{
 
     
     if(body.id!=null && body.id!=""){
-        data[body.id] = {
-            "location" : body.location,
-            "temp" : body.temp,
-            "hum" : body.hum,
-            "last_update" : waktuFormatted
-        };
+        try {
+            const petName = request.query.petName;
+            const ownerName = request.query.ownerName;
+            if (!petName || !ownerName) throw new Error('Pet and owner names required');
+            await sql`INSERT INTO data VALUES (${ body.id}, ${ body.location}, ${ body.temp}, ${ body.hum}, ${ body.last_update});`;
+        } catch (error) {
+            res.send({
+                "status" : "error",
+                "data" : error
+            });
+        }
     }
   
     console.log(data);
@@ -66,7 +71,12 @@ server.get("/data",(req,res)=>{
 
 });
 
-server.get("/getdata",(req,res)=>{
-    res.send(data);
+server.get("/getdata",async (req,res)=>{
+    try {
+        const { rows } = await sql`SELECT * from data `;
+        res.send(rows);
+      } catch (error) {
+        res.send(error);
+      }
 });
 
