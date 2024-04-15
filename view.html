@@ -241,6 +241,17 @@
     let tempField = document.getElementById("tempField");
     let humField = document.getElementById("humField");
     let updateField = document.getElementById("updateField");
+    let visible = true;
+
+    document.addEventListener('visibilitychange', function (event) {
+        if (document.hidden) {
+            console.log('not visible');
+            visible = false;
+        } else {
+            console.log('is visible');
+            visible = true;
+        }
+    });
 
     function card(data){
         console.log("info");
@@ -284,38 +295,40 @@
     }
 
     function fetchData(){
-        console.log("hallo");
-        $.ajax({
-            method : "get",
-            url: "getdata",
-            context: document.body
-        }).done(function(e) {
-            console.log(e);
-            if(Object.keys(e).length > 0){
-              dataArea.innerHTML = "";
-            }
-            const waktuSekarang = new Date();
-            waktuSekarang.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
-            // Mendapatkan komponen waktu
-            const tahun = waktuSekarang.getFullYear();
-            const bulan = String(waktuSekarang.getMonth() + 1).padStart(2, '0'); // Perlu ditambah 1 karena indeks bulan dimulai dari 0
-            const hari = String(waktuSekarang.getDate()).padStart(2, '0');
-            const jam = String(waktuSekarang.getHours()).padStart(2, '0');
-            const menit = String(waktuSekarang.getMinutes()).padStart(2, '0');
-            const detik = String(waktuSekarang.getSeconds()).padStart(2, '0');
-    
-            // Membuat string dengan format yang diinginkan
-            waktuFormatted = `${tahun}-${bulan}-${hari} ${jam}:${menit}:${detik}`;
+        if(visible){
+          console.log("hallo");
+          $.ajax({
+              method : "get",
+              url: "getdata",
+              context: document.body
+          }).done(function(e) {
+              console.log(e);
+              if(Object.keys(e).length > 0){
+                dataArea.innerHTML = "";
+              }
+              const waktuSekarang = new Date();
+              waktuSekarang.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
+              // Mendapatkan komponen waktu
+              const tahun = waktuSekarang.getFullYear();
+              const bulan = String(waktuSekarang.getMonth() + 1).padStart(2, '0'); // Perlu ditambah 1 karena indeks bulan dimulai dari 0
+              const hari = String(waktuSekarang.getDate()).padStart(2, '0');
+              const jam = String(waktuSekarang.getHours()).padStart(2, '0');
+              const menit = String(waktuSekarang.getMinutes()).padStart(2, '0');
+              const detik = String(waktuSekarang.getSeconds()).padStart(2, '0');
+      
+              // Membuat string dengan format yang diinginkan
+              waktuFormatted = `${tahun}-${bulan}-${hari} ${jam}:${menit}:${detik}`;
 
-            for(let data in e){
-                curData[e[data].sensor_id] = e[data];
-                console.log(e[data]);
-                dataArea.innerHTML += card(e[data]);
-            }
-        }).fail((e)=>{
-            console.log("Error :" );
-            console.log(e);
-        });;
+              for(let data in e){
+                  curData[e[data].sensor_id] = e[data];
+                  console.log(e[data]);
+                  dataArea.innerHTML += card(e[data]);
+              }
+          }).fail((e)=>{
+              console.log("Error :" );
+              console.log(e);
+          });;
+        }
 
         setTimeout(fetchData,10000);
     }
