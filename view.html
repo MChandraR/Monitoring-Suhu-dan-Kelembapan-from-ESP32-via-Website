@@ -265,6 +265,7 @@
         }).done(function(e) {
             dataArea.innerHTML = "";
             const waktuSekarang = new Date();
+            waktuSekarang.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
             // Mendapatkan komponen waktu
             const tahun = waktuSekarang.getFullYear();
             const bulan = String(waktuSekarang.getMonth() + 1).padStart(2, '0'); // Perlu ditambah 1 karena indeks bulan dimulai dari 0
