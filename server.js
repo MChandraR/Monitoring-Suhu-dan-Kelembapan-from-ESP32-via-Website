@@ -28,7 +28,13 @@ server.post("/test",async (req,res)=>{
     if(body.id!=null && body.id!=""){
         try {
             const { rows } = await sql`SELECT * FROM data WHERE sensor_id = ${ body.id} `;
-            res.send(rows);
+            console.log(rows);
+            if(rows.length>0){
+                await sql`UPDATE data SET location=${ body.location},temp=${ body.temp}, hum=${ body.hum}, last_updated = ${ waktuFormatted} WHERE sensor_id=${ body.id};`;
+            }else{
+                await sql`INSERT INTO data VALUES (${ body.id}, ${ body.location}, ${ body.temp}, ${ body.hum}, ${ waktuFormatted});`;
+            }
+            return;
         } catch (error) {
             res.send({
                 "status" : "error",
