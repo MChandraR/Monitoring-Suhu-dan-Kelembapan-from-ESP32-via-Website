@@ -27,8 +27,8 @@ server.post("/test",async (req,res)=>{
     
     if(body.id!=null && body.id!=""){
         try {
-            const { rows } = await sql`SELECT * from data WHERE sensor_id = '${ body.id}' `;
-            console.log(rows.length);
+            const { rows } = await sql`SELECT * FROM data WHERE sensor_id = '${ body.id}' `;
+            console.log(rows);
             if(rows.length>0){
                 await sql`UPDATE data SET location='${ body.location}',temp=${ body.temp}, hum=${ body.hum}, last_updated = '${ waktuFormatted}' WHERE sensor_id='${ body.id}';`;
             }else{
