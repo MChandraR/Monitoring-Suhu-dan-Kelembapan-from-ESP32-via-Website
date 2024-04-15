@@ -1,0 +1,10 @@
+ 
+        if(waktuFormatted.substring(0,16)===data.last_update.substr(0,16)){
+          last_update = "Baru saja";
+        }else if(waktuFormatted.substring(0,13)===data.last_update.substr(0,13)){
+          last_update = parseInt(waktuFormatted.substr(14,2))-parseInt(data.last_update.substr(14,2))  + " Menit lalu";
+        }else if(waktuFormatted.substring(0,11)===data.last_update.substr(0,11)){
+          last_update = parseInt(waktuFormatted.substr(11,2))-parseInt(data.last_update.substr(11,2))  + " Jam lalu";
+        }else if(waktuFormatted.substring(0,7)===data.last_update.substr(0,7)){
+          last_update = parseInt(waktuFormatted.substr(8,2))-parseInt(data.last_update.substr(8,2))  + " Hari lalu";
+        }

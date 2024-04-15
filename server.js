@@ -16,11 +16,25 @@ let data = {};
 server.post("/test",(req,res)=>{
     console.log(req.body);
     let body = req.body;
+    const waktuSekarang = new Date();
+    // Mendapatkan komponen waktu
+    const tahun = waktuSekarang.getFullYear();
+    const bulan = String(waktuSekarang.getMonth() + 1).padStart(2, '0'); // Perlu ditambah 1 karena indeks bulan dimulai dari 0
+    const hari = String(waktuSekarang.getDate()).padStart(2, '0');
+    const jam = String(waktuSekarang.getHours()).padStart(2, '0');
+    const menit = String(waktuSekarang.getMinutes()).padStart(2, '0');
+    const detik = String(waktuSekarang.getSeconds()).padStart(2, '0');
+
+    // Membuat string dengan format yang diinginkan
+    const waktuFormatted = `${tahun}-${bulan}-${hari} ${jam}:${menit}:${detik}`;
+
+    
     if(body.id!=null && body.id!=""){
         data[body.id] = {
             "location" : body.location,
             "temp" : body.temp,
-            "hum" : body.hum
+            "hum" : body.hum,
+            "last_update" : waktuFormatted
         };
     }
   
