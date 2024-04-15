@@ -1,8 +1,10 @@
 const express = require("express");
 const {createServer} = require("http");
+const moment = require('moment-timezone');
 
 const server = express();
 const httpServer = createServer(server);
+
 
 server.get("/",(req,res)=>{
     res.send("hallo");
@@ -16,7 +18,9 @@ let data = {};
 server.post("/test",(req,res)=>{
     console.log(req.body);
     let body = req.body;
-    const waktuSekarang = new Date();
+    let waktuSekarang = new Date();
+    waktuSekarang = moment(waktuSekarang).tz('Asia/Jakarta');
+    waktuSekarang = new Date(waktuSekarang);
     // Mendapatkan komponen waktu
     const tahun = waktuSekarang.getFullYear();
     const bulan = String(waktuSekarang.getMonth() + 1).padStart(2, '0'); // Perlu ditambah 1 karena indeks bulan dimulai dari 0
