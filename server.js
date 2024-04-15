@@ -1,6 +1,7 @@
 const express = require("express");
 const {createServer} = require("http");
 const moment = require('moment-timezone');
+const { sql } = require("@vercel/postgres");
 
 const server = express();
 const httpServer = createServer(server);
@@ -38,6 +39,16 @@ server.post("/test",(req,res)=>{
         "status" : "berhasil",
         "data" : req.body
     });
+});
+
+server.get("/tempdata",async (req,res)=>{
+    try {
+        const { rows } = await sql`SELECT * from data `;
+        res.send(rows);
+      } catch (error) {
+        res.send(error);
+      }
+  
 });
 
 const fs = require('fs');
