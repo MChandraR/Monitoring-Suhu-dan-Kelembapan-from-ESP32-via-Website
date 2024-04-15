@@ -75,8 +75,8 @@ server.get("/getdata",async (req,res)=>{
     try {
         const { rows } = await sql`SELECT * from data `;
         res.send(rows);
-      } catch (error) {
+    } catch (error) {
         res.send(error);
-      }
+    }
 });
 

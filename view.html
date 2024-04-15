@@ -263,7 +263,7 @@
             url: "getdata",
             context: document.body
         }).done(function(e) {
-            console.log(Object.keys(e).length);
+            console.log(e);
             if(Object.keys(e).length > 0){
               dataArea.innerHTML = "";
             }
