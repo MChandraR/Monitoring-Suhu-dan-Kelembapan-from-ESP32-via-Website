@@ -18,19 +18,10 @@ let data = {};
 server.post("/test",(req,res)=>{
     console.log(req.body);
     let body = req.body;
-    let waktuSekarang = new Date();
-    waktuSekarang = moment(waktuSekarang).tz('Asia/Jakarta');
-    waktuSekarang = new Date(waktuSekarang);
-    // Mendapatkan komponen waktu
-    const tahun = waktuSekarang.getFullYear();
-    const bulan = String(waktuSekarang.getMonth() + 1).padStart(2, '0'); // Perlu ditambah 1 karena indeks bulan dimulai dari 0
-    const hari = String(waktuSekarang.getDate()).padStart(2, '0');
-    const jam = String(waktuSekarang.getHours()).padStart(2, '0');
-    const menit = String(waktuSekarang.getMinutes()).padStart(2, '0');
-    const detik = String(waktuSekarang.getSeconds()).padStart(2, '0');
+    let waktuSekarang = moment().tz('Asia/Jakarta');
 
     // Membuat string dengan format yang diinginkan
-    const waktuFormatted = `${tahun}-${bulan}-${hari} ${jam}:${menit}:${detik}`;
+    const waktuFormatted = waktuSekarang.format('YYYY-MM-DD HH:mm:ss');
 
     
     if(body.id!=null && body.id!=""){
