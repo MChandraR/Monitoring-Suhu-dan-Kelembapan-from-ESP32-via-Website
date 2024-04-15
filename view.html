@@ -229,7 +229,21 @@
         let color = parseInt(data.temp) >= 37 ? "Orange" : "#426B1F";
         let last_update = data.last_updated;
        
- 
+            
+        let pastMenit = parseInt(waktuFormatted.substr(14,2))-parseInt(data.last_updated.substr(14,2));
+        let pastJam = (parseInt(waktuFormatted.substr(11,2))-parseInt(data.last_updated.substr(11,2))) * 60;
+        let pastHari = (parseInt(waktuFormatted.substr(8,2))-parseInt(data.last_updated.substr(8,2))) * 60 * 24;
+        let totalWaktu = pastMenit + pastJam + pastHari;
+        
+        if(totalWaktu>=60 * 24){
+          last_update = parseInt(totalWaktu/(60*24)) + " Hari lalu";
+        }else if(totalWaktu >= 60){
+          last_update = parseInt(totalWaktu/60) + " Jam lalu";
+        }else if(totalWaktu > 0 ){
+          last_update = totalWaktu + " Menit lalu";
+        }else{
+          last_update = "Baru saja";
+        }
 
         return '<div style="float:left;width: 23rem; border:1;height: auto; margin-bottom : 20px; margin-right:20px; left: 523px; top: 301px; background: #FAFAF5; border-radius: 24px; overflow: hidden;" >'+
             '<table ><tr><td style="position:relative;"><span style="position:absolute; right:10px; bottom:10px; color:#426B1F;">'+last_update+'</span><img style="width: 23rem; height:12rem; left: 0px; top: 0px; " src="https://img.freepik.com/free-photo/white-cloud-blue-sky-sea_74190-4488.jpg?w=740&t=st=1713113490~exp=1713114090~hmac=1a16e61b94ec4176ca037c51f812a93375e632e6e8d95c16c59d0da7bfef236d" /></td></tr>' +
@@ -267,8 +281,8 @@
             waktuFormatted = `${tahun}-${bulan}-${hari} ${jam}:${menit}:${detik}`;
 
             for(let data in e){
-                console.log(data);
-                dataArea.innerHTML += card(data);
+                console.log(e[data]);
+                dataArea.innerHTML += card(e[data]);
             }
         }).fail((e)=>{
             console.log("Error :" );
