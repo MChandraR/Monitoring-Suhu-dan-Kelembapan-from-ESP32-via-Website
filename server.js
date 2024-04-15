@@ -27,7 +27,7 @@ server.post("/test",async (req,res)=>{
     
     if(body.id!=null && body.id!=""){
         try {
-            const { rows } = await sql`SELECT * FROM data WHERE sensor_id = '${ body.id}' `;
+            const { rows } = await sql`SELECT * FROM data WHERE sensor_id = ${ body.id} `;
             res.send(rows);
         } catch (error) {
             res.send({
