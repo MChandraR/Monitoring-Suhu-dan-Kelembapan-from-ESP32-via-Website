@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" >
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
-<body>
 <style>
   
   form .txt_field{
@@ -49,45 +48,48 @@
   
 
 </style>
+<body>
+
   
-<div style=" position: relative; background: white">
-  <div style="width: 100%; height:100%; left: 0px; top: 112px; position: absolute; background: white">
-  <table style="margin : 3rem 0; ">
-  <tbody>
-    <tr>
-      <td>
-        <div style="padding-left : 5rem;color: #2b4910; font-size: 64px;  font-weight:bold; line-height: 76.80px; word-wrap: break-word">TemAn</div>
-      </td>
-      <td style=" width : 95%;">
-        <div style="padding : 0 5%; width : 100%; "><span style="color: #2b4910; font-size: 20px; font-family: Inter; font-weight: 500; line-height: 26px; word-wrap: break-word">Pantau <b style="font-family:arial;">Tem</b>peratur dan kelembap<b style="font-family:arial;">An</b> secara realtime </span></div>
-      </td>
-      <td>
-        <div id="default" style="padding-left: 16px; padding-right: 16px; padding-top: 9.50px; padding-bottom: 9.50px; left: 1077px; top: 76px;  background:#426B1F ; border-radius: 20px; overflow: hidden;  border: 1px #C2C2C2 solid;justify-content: center; align-items: center; display: inline-flex">
-          <a style="text-align: center; color: white ; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 20.80px; word-wrap: break-word ;  text-decoration:none;" href="">Default</a>
-        </div>
-      </td>
-      <td>
-        <div id="sort" style="padding-left: 16px; padding-right: 16px; padding-top: 9.50px; padding-bottom: 9.50px; left: 1173px; top: 76px;  background: '#426B1F'; border-radius: 20px; overflow: hidden; border: 1px #C2C2C2 solid; justify-content: center; align-items: center; display: inline-flex">
-          <a style="text-align: center; color:black ; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 20.80px; word-break: unset ; word-wrap: unset; white-space:nowrap; text-decoration:none;" href="">A-Z</a>
-        </div>
-      </td>
-      <td style="padding-right:1rem;">
-        <div id="available" style="padding-left: 16px; padding-right: 16px; padding-top: 9.50px; padding-bottom: 9.50px; left: 1243px; top: 76px;  background: white ; border-radius: 20px; overflow: hidden; border: 1px #C2C2C2 solid; justify-content: center; align-items: center; display: inline-flex">
-          <a style="text-align: center; color:  black; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 20.80px; word-wrap: break-word; white-space:nowrap;  text-decoration:none;" href="">Available</a>
-        </div>
-      </td>
-    </tr>
-    <tr >
-      <td colspan="5" style="padding-left:5rem; padding-right:1rem;">
-        <div style="width:100%; height: 0px;  top: 149px;  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border: 2px #E6E6E6 solid"></div>
-      </td>
-    </tr>
-  </tbody>
-  </table>
+<div style=" background: white">
+  <div style="width: 100%; height:100%; left: 0px; top: 80px; position: absolute; background: white">
+    <table style="margin : 6vw 0; ">
+    <tbody>
+      <tr>
+        <td>
+          <div style="padding-left : 6vw;color: #2b4910; font-size: 4rem;  font-weight:bold; line-height: 76.80px; word-wrap: break-word">TemAn</div>
+        </td>
+        <td style=" width : 95%;">
+          <div style="padding : 0 5%; width : 100%; "><span style="color: #2b4910; font-size: 20px; font-family: Inter; font-weight: 500; line-height: 26px; word-wrap: break-word">Pantau <b style="font-family:arial;">Tem</b>peratur dan kelembap<b style="font-family:arial;">An</b> secara realtime </span></div>
+        </td>
+        <td>
+          <div id="default" style="padding-left: 16px; padding-right: 16px; padding-top: 9.50px; padding-bottom: 9.50px; left: 1077px; top: 76px;  background:#426B1F ; border-radius: 20px; overflow: hidden;  border: 1px #C2C2C2 solid;justify-content: center; align-items: center; display: inline-flex">
+            <a style="text-align: center; color: white ; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 20.80px; word-wrap: break-word ;  text-decoration:none;" href="">Default</a>
+          </div>
+        </td>
+        <td>
+          <div id="sort" style="padding-left: 16px; padding-right: 16px; padding-top: 9.50px; padding-bottom: 9.50px; left: 1173px; top: 76px;  background: '#426B1F'; border-radius: 20px; overflow: hidden; border: 1px #C2C2C2 solid; justify-content: center; align-items: center; display: inline-flex">
+            <a style="text-align: center; color:black ; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 20.80px; word-break: unset ; word-wrap: unset; white-space:nowrap; text-decoration:none;" href="">A-Z</a>
+          </div>
+        </td>
+        <td style="padding-right:1rem;">
+          <div id="available" style="padding-left: 16px; padding-right: 16px; padding-top: 9.50px; padding-bottom: 9.50px; left: 1243px; top: 76px;  background: white ; border-radius: 20px; overflow: hidden; border: 1px #C2C2C2 solid; justify-content: center; align-items: center; display: inline-flex">
+            <a style="text-align: center; color:  black; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 20.80px; word-wrap: break-word; white-space:nowrap;  text-decoration:none;" href="">Available</a>
+          </div>
+        </td>
+      </tr>
+      <tr >
+        <td colspan="5" style="padding-left:6vw; padding-right:1rem;">
+          <div style="width:100%; height: 0px;  top: 149px;  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border: 2px #E6E6E6 solid"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
   </div>
+  
   <div style="width: 100%; height:auto; left: 0px; top: 0px; position: absolute">
-    <div style="position:absolute; display:table-cell; top: 41px; left:5rem; padding-right:10px; align-content : center;" >
-        <table>
+    <div style="position:absolute; display:table-cell; top: 41px; left:6vw; padding-right:10px; align-content : center;" >
+        <table width="100%" >
           <tr>
             <td style="width:auto;">
               <div style=" color: #426B1F; font-size: 32px; font-family: Arial; font-weight: bold;  word-wrap: break-word" ><a href="home" style="text-decoration:none;  color: #426B1F;">M Chandra R</a></div>
@@ -96,9 +98,8 @@
         </table>
       </div>
     <div style="position:absolute; display:table-cell; top: 41px; right:0;  align-content : center;" >
-      <table>
+      <table >
         <tr>
-
           <td style="padding : 0 1rem ;">
             <a style="vertical-align :supper; top: 45.50px; float:left; text-align: center; color: black; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 20.80px; word-wrap: break-word; font-weight:bold; text-decoration:none;" href="home">Home</a></a>
           </td>
@@ -129,10 +130,12 @@
   </div>
   <!-- Bagian container -->
 
-  <div style="padding:0 5rem; float:left; position:absolute; top: 301px;" id="dataArea">
-    
-  </div>
+
  
+</div>
+
+<div style="padding:0 0 1vw 6vw ; float:left; position:absolute; top: 18rem;" id="dataArea">
+    
 </div>
 <!-- Tombol add job -->
 <div data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:fixed;padding-left: 23px; padding-right: 23px; padding-top: 13.50px; padding-bottom: 13.50px;  bottom: 1rem; right : 1rem; background: #426B1F; border-radius: 15px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">
@@ -253,7 +256,7 @@
         }
     });
 
-    function card(data){
+    function card(data,idx){
         console.log("info");
         let status = parseInt(data.temp) >= 37 ? "Cuaca Terik" : "Normal";
         let color = parseInt(data.temp) >= 37 ? "Orange" : "#426B1F";
@@ -274,9 +277,10 @@
         }else{
           last_update = "Baru saja";
         }
+        let margin = (parseInt(idx)%3) < 2 ? 20 : 0;
 
-        return '<div style="float:left;width: 23rem; border:1;height: auto; margin-bottom : 20px; margin-right:20px; left: 523px; top: 301px; background: #FAFAF5; border-radius: 24px; overflow: hidden;" >'+
-            '<table ><tr><td style="position:relative;"><span style="position:absolute; right:10px; bottom:10px; color:#426B1F;">'+last_update+'</span><img style="width: 23rem; height:12rem; left: 0px; top: 0px; " src="https://img.freepik.com/free-photo/white-cloud-blue-sky-sea_74190-4488.jpg?w=740&t=st=1713113490~exp=1713114090~hmac=1a16e61b94ec4176ca037c51f812a93375e632e6e8d95c16c59d0da7bfef236d" /></td></tr>' +
+        return '<div style="float:left;width: 29vw; border:1;height: auto; margin-bottom : 20px; margin-right:'+margin+'px;  background: #FAFAF5; border-radius: 24px; overflow: hidden;" >'+
+            '<table ><tr><td style="position:relative;"><span style="position:absolute; right:10px; bottom:10px; color:#426B1F;">'+last_update+'</span><img style="width: 29vw; height:12rem; left: 0px; top: 0px; " src="https://img.freepik.com/free-photo/white-cloud-blue-sky-sea_74190-4488.jpg?w=740&t=st=1713113490~exp=1713114090~hmac=1a16e61b94ec4176ca037c51f812a93375e632e6e8d95c16c59d0da7bfef236d" /></td></tr>' +
              ' <tr> <td  style="padding:0 10px;"><div style="left: 24px; top: 320px;  color: black; font-size: 20px; font-family: Inter; font-weight: 600; line-height: 26px; word-wrap: break-word">'+data.location+'</div> </td></tr>' +
             ' <tr> <td style="padding:0 10px;"> <div style="left: 24px; top: 350px;  color: '+color+'; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 26px; word-wrap: break-word">'+status+'</div> </td></tr> ' +
              ' <tr> <td  style="padding:0 10px;"><div style="left: 24px; top: 392px;  color: #6D6D6D; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word"><span>Suhu : '+data.temp+'°C</span><br><span>Kelembapan : '+data.hum+'%</span></div></td> </tr> ' +
@@ -322,7 +326,7 @@
               for(let data in e){
                   curData[e[data].sensor_id] = e[data];
                   console.log(e[data]);
-                  dataArea.innerHTML += card(e[data]);
+                  dataArea.innerHTML += card(e[data],data);
               }
           }).fail((e)=>{
               console.log("Error :" );
