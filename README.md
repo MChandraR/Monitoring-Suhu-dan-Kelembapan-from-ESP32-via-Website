@@ -1,0 +1,1 @@
+Ini merupakan project IoT yang mana merupakan website sekaligus server untuk memonitoring data suhu dan kelembapan yang dikirim oleh perangkat ESP32 secara realtime ( Saat ini device ESP32 sedang offline )
